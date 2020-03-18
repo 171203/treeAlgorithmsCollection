@@ -1,4 +1,10 @@
+                                                              //Written by: N Mohan Teja
+                                                              //Date: 18th March 2020
+                                                              //Contents: Implicit Declarations of the Functions
+
 #include<stdio.h>
+
+
 #include<stdlib.h>
 /******************************BINARY SEARCH TREE STRUCTURE ***********************************************************/
 typedef struct bst
@@ -19,7 +25,6 @@ void smallest_node_BST(node *root);
 void largest_node_BST(node *root); 
 int leaf_nodes_BST(node *root);
 int countNodes_BST(node *root);
-int nonLeafNodes_BST(node *root);
 int Depth_BST(node *root);
 
 

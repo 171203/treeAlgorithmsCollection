@@ -1,3 +1,7 @@
+                                    //Written by: N Mohan Teja 
+                                    //Date:    18th March 2020
+                                    //Content: Functions of Binary Search Tree, Adelson Velski Landis Tree and B -Tree.
+
 #include<stdio.h>
 #include<stdlib.h>
 #include"Tree_Algorithms.h"
