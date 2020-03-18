@@ -1,6 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
-#include"Tree.h"
+#include"Tree_Algorithms.h"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*****************************************************************************************************/
         /*****************************************************************************************************/
@@ -75,11 +75,6 @@ node *Insert_node_BST(node *root,char value)
  /******************** DISPLAYS THE CHARACTERS IN THE BINARY SEARCH TREE TREE IN PREORDER TRAVERSAL********************************************************************/
 void preOrderPrint_BST(node *root)
 {
-
-
-
-
-
 if(root==NULL)
 return;
 printf("%c-> ", root->number);
@@ -137,24 +132,6 @@ void print_Tree_Diagonal_BST(node *root,int level)
     print_Tree_Diagonal_BST(root->rightChild,level+1);
 }
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-/* 
-node *CreateNode(char number)
-  {
-   node *temp=malloc(sizeof(node));
-   if(temp==NULL)
-     {
-      printf("\tSorry,there is no space in the storage.\n");
-      exit(-1);
-     }
-   else
-     {
-      temp->number=number;
-      temp->leftChild=NULL;
-      temp->rightChild=NULL;
-      return temp;
-      }
- }
-*/
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void smallest_node_BST(node *root)
 {
@@ -180,11 +157,11 @@ int leaf_nodes_BST(node *root)
   
     if(root!=NULL)
     {
-	leaf_nodes_BST(root->leftChild);
+	
 	if((root->leftChild==NULL) && (root->rightChild==NULL))
-	{
+	
 	    count++;
-	}
+	leaf_nodes_BST(root->leftChild);
 	leaf_nodes_BST(root->rightChild);
     }
     return count;
@@ -194,27 +171,14 @@ int countNodes_BST(node *root)
 {
    if(root!=NULL)
    {
-       countNodes_BST(root->leftChild);
        count++;
+       countNodes_BST(root->leftChild);
        countNodes_BST(root->rightChild);
    }
    return count;
 }
-///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-int nonLeafNodes_BST(node *root)
-{
 
-    if(root!=NULL)
-    {
-	nonLeafNodes_BST(root->leftChild);
-	if((root->leftChild!=NULL)|| (root->rightChild!=NULL))
-	{
-	    count++;
-	}
-	nonLeafNodes_BST(root->rightChild);
-    }
-    return count;
-}
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int Height_BST(node *root)
 {
@@ -899,6 +863,9 @@ void display ( struct btnode *root )
         display ( root -> child [i] ) ;
     }
 }
+
+
+
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 

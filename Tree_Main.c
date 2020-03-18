@@ -1,7 +1,6 @@
 #include<stdio.h>
 #include<stdlib.h>
 #include"Tree_Algorithms.c"
-
 int main(int n,char *file[])
 {
     int choice;
@@ -17,6 +16,7 @@ int main(int n,char *file[])
     FILE *fp;
     int count=0;
     int *i;
+    int valid;
 
 
     if(n!=2)
@@ -84,22 +84,22 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n");
 		   int option;
+		   int quit;
 		   char indicator='Y';
-		   while(indicator=='Y')
+		  do
 		   {
 		  printf("\n=======================================================================\n");   
                   printf("\nPress 1- Height of the Binary Search Tree\n");
 		  printf("\n Press 2- Depth of the Binary Search Tree\n");
 		  printf("\n Press 3- Total Number of Leaf Nodes in the Binary Search Tree\n");
-		  printf("\n Press 4- Total Number of Non-Leaf Nodes in the Binary Search Tree\n");
-		  printf("\n Press 5- Total Number of Nodes in the Binmary Search Tree\n");
-		  printf("\n Press 6- Pre order Traversal of the Binary Search Tree\n");
-		  printf("\n Press 7- Post order Traversal of the Binary Search Tree\n");
-		  printf("\n Press 8- In order Traversal of the Binary Search Tree\n");
-		  printf("\n Press 9-Smallest node in the Binary Search Tree\n");
-		  printf("\n Press 10- Largest Node in the Binary Search Tree\n");
-		  printf("\n Press 11- Deleting any random character in the Binary Search Tree\n");
-		  printf("\n Press 12 - For Coming out of the Binary Search Tree\n");
+		  printf("\n Press 4- Total Number of Nodes in the Binmary Search Tree\n");
+		  printf("\n Press 5- Pre order Traversal of the Binary Search Tree\n");
+		  printf("\n Press 6- Post order Traversal of the Binary Search Tree\n");
+		  printf("\n Press 7- In order Traversal of the Binary Search Tree\n");
+		  printf("\n Press 8-Smallest node in the Binary Search Tree\n");
+		  printf("\n Press 9- Largest Node in the Binary Search Tree\n");
+		  printf("\n Press 10- Deleting any random character in the Binary Search Tree\n");
+		  printf("\n Press 11 - For Coming out of the Binary Search Tree\n");
 		  printf("\n==========================================================================\n");
                   scanf("%d",&option);
 		  getchar();
@@ -121,25 +121,21 @@ int main(int n,char *file[])
 		   break;
 			case 3:
 		   printf("\n");
+		   count=0;
 		   printf("\n======================================================================================================================================\n");
 		   printf("\n Total Number of Leaf Nodes in the given Binary Search Tree is %d\n",leaf_nodes_BST(root));
-		   printf("\n======================================================================================================================================\n");
+		   printf("\n=======================================================================================================================================\n");
 		   break;
+			
 			case 4:
-
 		   printf("\n");
-		   printf("\n======================================================================================================================================\n");
-		   printf("\n Total Number of Non -Leaf Nodes in the Binary Search Tree is %d\n",nonLeafNodes_BST(root));
-		   printf("\n======================================================================================================================================\n");
-		   break;
-			case 5:
-		   printf("\n");
+		   count=0;
 		   count=0;
 		   printf("\n======================================================================================================================================\n");
 		   printf("\n Total Number of Nodes in the Binary Search Tree is %d\n",countNodes_BST(root));
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 6:
+			case 5:
 		   printf("\n");
 		   system("clear");
 		   printf("\n======================================================================================================================================\n");
@@ -155,7 +151,7 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 7:
+			case 6:
 
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
@@ -165,7 +161,7 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 8:
+			case 7:
 
 		   printf("\n");
 		   printf("\n");
@@ -177,21 +173,21 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 9:
+			case 8:
 		   printf("\n");
                    printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   smallest_node_BST(root);
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 10:
+			case 9:
 
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   largest_node_BST(root);
 		   printf("\n======================================================================================================================================\n");
 		   break;
-			case 11:
+			case 10:
                    printf("\n======================================================================================================================================\n");
 		   printf("enter the character to be deleted\n");
 		   printf("\n======================================================================================================================================\n");
@@ -237,7 +233,7 @@ int main(int n,char *file[])
 		      printf("\n");
 		      count=0;
 		      printf("\n===================================================================================================================================\n");
-		      printf("\n Number of nodes in the Binary Search Tree after the Deletion of  character is %d\n",(leaf_nodes_BST(root)+nonLeafNodes_BST(root)));
+		      printf("\n Number of nodes in the Binary Search Tree after the Deletion of  character is %d\n",countNodes_BST(root));
 		      printf("\n===================================================================================================================================\n");
 		      printf("\n");
                     
@@ -267,18 +263,20 @@ int main(int n,char *file[])
 		      printf("\n\n");
 		      printf("=======================================================================================================================================");
 		       break;
-	             case 12:
+	             case 11:
 		       printf("\n");
+		       quit=1;
 		       printf("\n Good bye Have a Nice Time\n");
 		       printf("\n");
 			default:
+		               quit=0;
 		         printf("\n !!!!!!!!!!!!!!!!!In correct option please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		    }
-		    printf("\n");
-		    printf("\n enter Y to continue N to stop\n");
-		    scanf("%c",&indicator);
-		    printf("%c\n",indicator);
-		}	
+		   // printf("\n");
+		   // printf("\n enter Y to continue N to stop\n");
+		   // scanf("%c",&indicator);
+		   // printf("%c\n",indicator);
+		}while(!quit);	
                  break;
              case 2:
 		     
@@ -312,7 +310,7 @@ int main(int n,char *file[])
 		    printf("\n");
 		    int opt;
 		    char cor='R';
-		    while(cor=='R')
+		   do
 		    {
 			printf("\n================================================================================\n");
 			printf("\n Press 1- height of the Adelson Velski Landis Tree\n");
@@ -447,19 +445,22 @@ int main(int n,char *file[])
 		       case 9:
 			        printf("\n\n");
 				printf("///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
+	                         
+				quit=1;
 			        printf("\n good bye\n\n");
 				printf("\n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n");
 				break;
 		      default:
 			    printf("\n Incorrect option\n");
+			    quit=0;
 			       }
 			     printf("\n\n");
-			     printf("//////////////////////////////////////////////////////////////////////////////////////////\n");
-			     printf("\n enter R to continue N to stop\n");
-			     printf("\n//////////////////////////////////////////////////////////////////////////////////////////\n");
-			     scanf("%c",&cor);
-			     printf("\n %c\n",cor);
-		   }
+			   //  printf("//////////////////////////////////////////////////////////////////////////////////////////\n");
+			    // printf("\n enter R to continue N to stop\n");
+			    // printf("\n//////////////////////////////////////////////////////////////////////////////////////////\n");
+			    // scanf("%c",&cor);
+			    // printf("\n %c\n",cor);
+		   }while(!quit);
                }		    
 		break;	
 	     case 3:
@@ -485,17 +486,17 @@ int main(int n,char *file[])
 		    printf("\n");
 		    display(btree);
 		}
-		     while(mo=='H')
+		     do
 		     {
 			 printf("\n================================================\n");
 			 printf("\n Press 1  Height of the B tree\n");
 			 printf("\n Press 2- Depth of the B tree\n");
-			 printf("\n Press 3- Pre order traversal of the B tree\n");
-			 printf("\n press 4- In porder traversal of the B tree\n");
-			 printf("\n Press 5- Post order traversal of the B tree\n");
-                         printf("\n press 6- Toatl number of nodes in the B tree \n");
-			 printf("\n Press 7-Deleting an element in the B tree \n");
-			 printf("\n Press 8- termination from the B tree\n");
+			 printf("\n Press 3- Traversal of the B tree\n");
+			
+			
+                         
+			 printf("\n Press 4-Deleting an element in the B tree \n");
+			 printf("\n Press 5- termination from the B tree\n");
 			 printf("\n=====================================================\n");
 			 printf("\n\n");
 			 printf("\n Please enter your choice as preferred\n");
@@ -518,27 +519,13 @@ int main(int n,char *file[])
 			     case 3:
 				 printf("\n ");
 				 printf("\n pre order traversal of the B tree is\n");
-				 printf("\n ");
-				 break;
+				    printf("\n");
+				    display(btree);
+				    break;
 			     case 4:
-				 printf("\n ");
-				 printf("\n In order traversal of the given B tree id\n");
-				 printf("\n ");
-				 break;
-			     case 5:
-				 printf("\n");
-				 printf("\n Post order traversal of the B tree is \n");
-				 printf("\n ");
-				 break;
-			     case 6:
-				 printf("\n ");
-				 printf("\n Total Number of Nodes in the B tree is\n");
-				 printf("\n");
-				 break;
-			     case 7:
 				 {
 				 printf("\n");			        				 				     
-			         printf("\n Deleting the character |z| .............\n");
+			         printf("\n Deleting the character ||z|| .............\n");
 				 btree=delete('z',btree);
 			
 				 printf("\n B tree after the deletion process is \n");
@@ -562,6 +549,7 @@ int main(int n,char *file[])
 
 				break;
 			     case 8:
+				valid=1;
 				printf("\n\n");
 				printf("\n Good bye\n");
 	
@@ -571,13 +559,14 @@ int main(int n,char *file[])
             
                      default:
 				 printf("\n");
+				 valid=0;
 				 printf("\n In correct option please try again\n");
 			 }
-                   printf("\n Press H to continue or N to stop\n");
-		   scanf("%c",&mo);
-		   printf("\n%c\n",mo);
+                 //  printf("\n Press H to continue or N to stop\n");
+		  // scanf("%c",&mo);
+		   //printf("\n%c\n",mo);
 		 
-		     }
+		     }while(!valid);
 
 		     printf("\n");
 		
@@ -588,12 +577,18 @@ int main(int n,char *file[])
 
          
 	  break;
+	     case 4:
+	        
+		 printf("\n good bye\n");
+		 printf("\n");
+		 break;
 	
 	
 	
 	
 	printf("\n");
 	     default:
+	             
 	           printf("\n Incorrect option please try again\n");
 		   printf("\n");
 	}
