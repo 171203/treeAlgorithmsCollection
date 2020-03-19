@@ -63,8 +63,8 @@ void largest_AVL(nodee *);
 
 
 
-#define MAX 4
-#define MIN 2
+#define MAX 7
+#define MIN 4
 
 struct btnode
 {
@@ -80,7 +80,7 @@ int searchnode ( char, struct btnode *, int * ) ;
 void fillnode ( char, struct btnode *, struct btnode *, int ) ;
 void split ( char, struct btnode *, struct btnode *,
                 int, char *, struct btnode ** ) ;
-struct btnode * delete ( char, struct btnode * ) ;
+struct btnode * delete_ ( char, struct btnode * ) ;
 int delhelp ( char, struct btnode * ) ;
 void clear ( struct btnode *, int ) ;
 void copysucc ( struct btnode *, int ) ;
@@ -89,6 +89,17 @@ void rightshift ( struct btnode *, int ) ;
 void leftshift ( struct btnode *, int ) ;
 void merge ( struct btnode *, int ) ;
 void display ( struct btnode * ) ;
+int max_btree(char,char,char);
+int maxlevel(struct btnode *);
+void printMaxLevel(struct btnode*);
+void getMinMax(struct btnode *);
+int getMax(struct btnode *);
+int getMin(struct btnode *);
+void printTotal(struct btnode*);
+int totalKeys(struct btnode*);
+void inorder_btree(struct btnode*);
+void print_btree(struct btnode*,int );
+
 
 
 

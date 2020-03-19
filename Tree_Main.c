@@ -7,7 +7,7 @@
 int main(int n,char *file[])
 {
     int choice;
-    char key;
+    char key,c;
     system("clear");
     int flag = 0;
     char ch[1];
@@ -42,7 +42,7 @@ int main(int n,char *file[])
     printf("\n");
     fscanf(fp,"%s",ch);
     printf("==================================================================TREE LIBRARY=========================================================================\n");
-   while(condition=='M')
+   while(1)
     {	
       printf("\n===================================================================================================================================================\n");
       printf("\n\t\t\t\t Press 1- Binary Search Tree\t\t\t\t");
@@ -88,7 +88,7 @@ int main(int n,char *file[])
 		   printf("\n");
 		   int option;
 		   int quit;
-		   char indicator='Y';
+		 
 		  
 		  do
 		   {
@@ -192,18 +192,19 @@ int main(int n,char *file[])
 		   printf("\n======================================================================================================================================\n");
 		   break;
 		case 10:
+		  
                    printf("\n======================================================================================================================================\n");
 		   printf("enter the character to be deleted\n");
 		   printf("\n======================================================================================================================================\n");
-		   scanf("%c",&key);
-		   printf("\n%c\n",key);
-		   getchar();
-		   flag= search_BST(root,key);
+		   scanf("%c",&c);
+		   printf("\n%c\n",c);
+		    c=getchar();
+		   flag= search_BST(root,c);
                     if(flag)
 		      
 		    {
 		     printf("\n====================================================================================================================================\n");
-		     printf("Key %c found in the Tree \n",key);
+		     printf("Key %c found in the Tree \n",c);
                      printf("\n====================================================================================================================================\n"); 
 		     printf("\n===================================================================================================================================\n");
                      printf("\n");
@@ -263,7 +264,7 @@ int main(int n,char *file[])
 		     printf("=======================================================================================================================================");                         }
 		      else
 		      {
-			  printf("\n %c not found in the Binary Search Tree \n",key);
+			  printf("\n %c not found in the Binary Search Tree \n",c);
 		      }
 
 		       break;
@@ -276,11 +277,8 @@ int main(int n,char *file[])
 		               quit=0;
 		         printf("\n !!!!!!!!!!!!!!!!!In correct option please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
 		    }
-		    //printf("\n");
-		    //printf("\n enter Y to continue N to stop\n");
-		    //scanf("%c",&indicator);
-		    //printf("%c\n",indicator);
-		}while(!quit);
+		   
+		}while(option!=11);
                  break;
              case 2:
 		     
@@ -381,7 +379,7 @@ int main(int n,char *file[])
 			   printf("\n==============================================================================================================================\n");
 		           scanf("%c",&key);
 			   printf("\n %c\n",key);
-		           flag=search_AVL(avl,key);
+		           flag=search_AVL(avl,key);// searching the element in the Avl tree
 			     if(flag)
 			     {
 				 printf("\n========================================================================================================================\n");
@@ -459,24 +457,21 @@ int main(int n,char *file[])
 			    quit=0;
 			       }
 			     printf("\n\n");
-			   //  printf("//////////////////////////////////////////////////////////////////////////////////////////\n");
-			    // printf("\n enter R to continue N to stop\n");
-			    // printf("\n//////////////////////////////////////////////////////////////////////////////////////////\n");
-			    // scanf("%c",&cor);
-			    // printf("\n %c\n",cor);
-		   }while(!quit);
-               }		    
+			  
+		   }while(opt!=9);// end of do while loop
+               }//end of the AVL Tree implementation		    
 		break;	
 	     case 3:
-		rewind(fp);
+		rewind(fp);// positioning the file pointer to the starting position for the each Tree implementation
                 char mo='H';
 		int *pos;
-		while(!feof(fp))
+		int valid;
+		while(!feof(fp))//Reading the till the end of the file pointer
 		{
 		   btree=insert(ch[0],btree);
 		    fscanf(fp,"%s",ch);
 		}
-		if(btree==NULL)
+		if(btree==NULL)// check for empty
 		{
 		    printf("Tree is empty\n");
 		    exit(-1);
@@ -484,7 +479,7 @@ int main(int n,char *file[])
 		
 		else
 		{
-		    btree=insert(ch[0],btree);
+		    btree=insert(ch[0],btree);// inserting the characters onto the b tree
 		    fscanf(fp,"%s",ch);
 		   
 		    printf("\n");
@@ -494,29 +489,28 @@ int main(int n,char *file[])
 		     {
 			 printf("\n================================================\n");
 			 printf("\n Press 1  Height of the B tree\n");
-			 printf("\n Press 2- Depth of the B tree\n");
-			 printf("\n Press 3- Traversal of the B tree\n");
-			
-			
-                         
+			 printf("\n Press 2- Printing of  the B-Tree\n");
+			 printf("\n Press 3- Pre-Traversal of the B tree\n"); 
 			 printf("\n Press 4-Deleting an element in the B tree \n");
+			 
 			 printf("\n Press 5- termination from the B tree\n");
 			 printf("\n=====================================================\n");
 			 printf("\n\n");
 			 printf("\n Please enter your choice as preferred\n");
 			
-		         scanf("%d",&choice);
-			 printf("\n %d\n",choice);
-			 switch(choice)
+		         scanf("%d",&valid);
+			 printf("\n %d\n",valid);
+			 switch(valid)
 			 {
 			     case 1:
 				 printf("\n");
-				 printf("\n Height of the B tree is \n");
+				 printf("\n Height of the B tree is %d\n",maxLevel(btree));
 				 printf("\n");
 				 break;
 			     case 2:
 				 printf("\n");
-				 printf("\n Depth of the B tree is \n");
+				print_btree(btree,3);
+
 				 printf("\n ");
 				 break;
 				  
@@ -530,7 +524,7 @@ int main(int n,char *file[])
 				 {
 				 printf("\n");			        				 				     
 			         printf("\n Deleting the character ||z|| .............\n");
-				 btree=delete('z',btree);
+				 btree=delete_('z',btree);
 			
 				 printf("\n B tree after the deletion process is \n");
 			
@@ -547,8 +541,10 @@ int main(int n,char *file[])
 				 printf("\n");
 
 				break;
-			     case 8:
-				valid=1;
+			    
+
+			     case 5:
+				quit=1;
 				printf("\n\n");
 				printf("\n Good bye\n");
 	
@@ -558,14 +554,12 @@ int main(int n,char *file[])
             
                      default:
 				 printf("\n");
-				 valid=0;
+				 quit=0;
 				 printf("\n In correct option please try again\n");
-			 }
-                 //  printf("\n Press H to continue or N to stop\n");
-		  // scanf("%c",&mo);
-		   //printf("\n%c\n",mo);
+			 }//end of switch case for B tree choices
+                 
 		 
-		     }while(!valid);
+		     }while(valid!=5);// end of while loop
 
 		     printf("\n");
 		
@@ -580,26 +574,20 @@ int main(int n,char *file[])
 	        
 		 printf("\n good bye\n");
 		 printf("\n");
+		 exit(-1);
 		 break;
-	
-	
-	
-	
-	printf("\n");
 	     default:
 	             
 	           printf("\n Incorrect option please try again\n");
 		   printf("\n");
-	}
-	printf("\n enter M to continue or N to stop\n");
-	scanf("%c",&condition);
-	printf("%c\n",condition);
-    }
+	}//end of switch case for Tree Algorithms options
+	
+    }while(choice!=4);
 
-    fclose(fp);
+    fclose(fp);// closing the file that has been opened for reading the input
 
 			
-}
+}// end of the main function
 
 
              

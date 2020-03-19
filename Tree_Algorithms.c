@@ -665,7 +665,7 @@ void split ( char val, struct btnode *c, struct btnode *n,
 }
 
 /* deletes value from the node */
-struct btnode * delete ( char val, struct btnode *root )
+struct btnode * delete_ ( char val, struct btnode *root )
 {
     struct btnode * temp ;
     if ( ! delhelp ( val, root ) )
@@ -867,6 +867,95 @@ void display ( struct btnode *root )
         display ( root -> child [i] ) ;
     }
 }
+//Maximum in the b tree//
+
+int max_btree(char first, char second, char third) {
+int max = first;
+if (second > max) max = second;
+if (third > max) max = third;
+return max;
+}
+//Maximum level in the B tree//
+int maxLevel(struct btnode *head) {
+if (head) 
+{
+int l = 0, mr = 0, r = 0, max_depth;
+if (head->child[0] != NULL) l = maxLevel(head->child[0]);
+if (head->child[1] != NULL) mr = maxLevel(head->child[1]); 
+if (head->count == 2) {
+if (head->child[2] != NULL) r = maxLevel(head->child[2]);
+}
+max_depth = max_btree(l, mr, r) + 1;
+return max_depth;
+}
+return 0;
+}
+
+
+void print_btree(struct btnode *head, int blanks)
+{
+if (head)
+{
+int i;
+for(i=1; i<=blanks; i++)
+printf(" ");
+for (i=0; i < head->count; i++)
+printf("%c ",head->value[i]);
+printf("\n");
+for (i=0; i <= head->count; i++)
+print_btree(head->child[i], blanks+10);
+}/*End of if*/
+}/*End of display()*/
+
+
+int totalKeys(struct btnode *head) {
+if (head) {
+int inc = 1;
+if (head->count >= 1) {
+inc += totalKeys(head->child[0]);
+inc += totalKeys(head->child[1]);
+if (head->count== 2) inc += totalKeys(head->child[2]) + 1;
+}
+return count;
+}
+return 0;
+}
+
+void printTotal(struct btnode *head) {
+printf("%d\n",totalKeys(head));
+}
+
+
+int getMin(struct btnode *head) {
+if (head) {
+int min;
+if (head->child[0] != NULL) min = getMin(head->child[0]);
+else min = head->value[0];
+return min;
+}
+return 0;
+}
+
+int getMax(struct btnode *head) {
+if (head) {
+int max;
+if (head->count == 1) {
+if (head->child[1] != NULL) max = getMax(head->child[1]);
+else max = head->value[0];
+}
+if (head->count == 2) {
+if (head->child[2] != NULL) max = getMax(head->child[2]);
+else max = head->value[1];
+}
+return max;
+}
+return 0;
+}
+
+void getMinMax(struct btnode *head) {
+printf("%c %c\n", getMin(head), getMax(head));
+}
+
 
 
 
