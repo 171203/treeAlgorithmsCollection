@@ -40,6 +40,25 @@ int main(int n,char *file[])
     printf("\n");
     fscanf(fp,"%s",ch);
     printf("==================================================================TREE LIBRARY=========================================================================\n");
+   
+    printf("\n  Name : N Mohan Teja \n");
+    printf("\n  Class : 3rd Year Mathematics Honours\n");
+    printf("\n  Registeration no: 171203 \n");
+    printf("\n  Language: C \n");
+    printf("\n  Complier : GNU Complier\n");
+    printf("\n  Project : Implementation of the Tree Algorithms \n");
+    printf("\n Git Hub ID: nmohanteja8@gmail.com\n");
+    printf("\n  University: Sri Sathya Sai Institute of Higher Learning \n");
+    printf("\n  Guided by: Sai Kumar \nSanaka \nShiva Sundar \nUday Kiran\nDarshan Gera\n");
+                                  
+    
+    
+    printf("\n****************************************************************************************************************************************\n");
+   printf("\n*                                                                                                                                      *\n");
+   printf("\n*                                                                                                                                      *\n");
+   printf("\n                                 This is the Tree Implementation Menu Driven Program                                                  \n"  ); 
+   printf("\n***************************************************************************************************************************************\n");
+
    while(1)
     {	
         printf("\n===================================================================================================================================================\n");
@@ -69,19 +88,19 @@ int main(int n,char *file[])
 		}
 		if(root==NULL)
 		{
-		    printf("Tree is empty\n");
+		    printf("Tree is empty\n");// check for empty tree
 		    exit(-1);
 		}
 	
 		  else
 		  {   
-		   root=Insert_node_BST(root,ch[0]);
+		   root=Insert_node_BST(root,ch[0]);// inserting the characters into the tree by reading from the specified file
 		   fscanf(fp,"%s",ch);
 		   printf("Binary Search Tree in Triangular form is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-		   print_Tree_Triangle_BST(root,2);
+		   print_Tree_Triangle_BST(root,2);// printing in triangle form
 		   printf("\n");
 		   printf("Binary Search Tree in Diagonal form is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
-		   print_Tree_Diagonal_BST(root,2);
+		   print_Tree_Diagonal_BST(root,2);// printing in diagonal form
 		   printf("\n");
 		   printf("\n");
 		   int option;
@@ -279,16 +298,16 @@ int main(int n,char *file[])
 			printf("\n=========================================================================================================\n");
 		    }
 		   
-		}while(option!=11);
+		}while(option!=11);// end of do while loop
 	  }//end of the Binary Search Tree
                  break;
              case 2:
 		     
-                 system("clear");
+                 system("clear");// clearing the screen
                  rewind(fp);   
-	         while(!feof(fp))
+	         while(!feof(fp))// reading the file until we reach the end of file
 	           {
-		     avl=_insert(avl,ch[0]);
+		     avl=_insert(avl,ch[0]);// reading from the file
 		     fscanf(fp,"%s",ch);
 	           }   
 		
@@ -311,6 +330,9 @@ int main(int n,char *file[])
 		      printf("\n");
 		      printf("\n");
 		      int opt;
+		      printf("\n=======================================================\n");
+		      printf("\n Adelson Velski Landis Tree Implementation\n");
+		      printf("\n========================================================\n");
 		   
 		   do
 		    {
@@ -335,7 +357,9 @@ int main(int n,char *file[])
 			   printf("\n\n");
 			   printf("\n==============================================================================================================================\n");
 		           print_AVL(avl,2);
+			   printf("\n=============================================================================================================================\n");
 			   printf("\n");
+			   printf("\n==============================================================================================================================\n");
 			   printf("Height of the Adelson Velski Landis Tree is %d\n",height(avl));
                            printf("\n\n");
 			   printf("\n==============================================================================================================================\n");           	           
@@ -467,9 +491,6 @@ int main(int n,char *file[])
 		break;	
 	     case 3:
 		rewind(fp);// positioning the file pointer to the starting position for the each Tree implementation
-                char mo='H';
-		int *pos;
-		int valid;
 		while(!feof(fp))//Reading the till the end of the file pointer
 		{
 		   btree=insert(ch[0],btree);
