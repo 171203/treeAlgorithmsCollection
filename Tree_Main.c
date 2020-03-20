@@ -24,8 +24,8 @@ int main(int n,char *file[])
 
     if(n!=2)
     {
-	printf("\n sorry input yoy given is incorrect\n");
-	printf("usage:a.out fileneme 1 \n");
+	printf("\n Sorry Input You given is Absorted\n");
+	printf("Usage:a.out fileneme  \n");
 	exit(-1);
     }
    
@@ -35,7 +35,7 @@ int main(int n,char *file[])
     fp=fopen(file[1],"r");
     if(fp==NULL)
     {
-	printf("\n the file that you requesed is not available !!! try again\n");
+	printf("\n The file that you requesed is not available !!! try again\n");
 	printf("please give the appropriate file that is available in the current directory\n");
 	exit(-1);
     }
@@ -46,7 +46,7 @@ int main(int n,char *file[])
     {	
       printf("\n===================================================================================================================================================\n");
       printf("\n\t\t\t\t Press 1- Binary Search Tree\t\t\t\t");
-      printf("\n\t\t\t\t Press 2- Adelson Velski Landis Tree\t\t\t\t");
+      printf("\n\t\t\t\t Press 2- Adelson Velski Landis Tree\t\t\t\t\n");
       printf("\n\t\t\t\t Press 3- B Tree  \t\t\t\t\n");
       printf("\n\t\t\t\t Press 4- Termination of the Program\t\t\t\t\n");
       printf("\n===================================================================================================================================================\n");
@@ -79,10 +79,10 @@ int main(int n,char *file[])
 		
 		   root=Insert_node_BST(root,ch[0]);
 		   fscanf(fp,"%s",ch);
-		   printf("Binary Search Tree in Triangular form is:\n");
+		   printf("Binary Search Tree in Triangular form is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   print_Tree_Triangle_BST(root,2);
 		   printf("\n");
-		   printf("Binary Search Tree in Diagonal form is:\n");
+		   printf("Binary Search Tree in Diagonal form is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   print_Tree_Diagonal_BST(root,2);
 		   printf("\n");
 		   printf("\n");
@@ -149,7 +149,7 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   printf("\n");
-		   printf("\nPre order Traversal is:\n");
+		   printf("\nPre order Traversal is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   printf("\n");
 		   preOrderPrint_BST(root);
 		   printf("\n");
@@ -160,7 +160,7 @@ int main(int n,char *file[])
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
 		   printf("\n");
-		   printf("\n Post Order Traversal is:\n");
+		   printf("\n Post Order Traversal is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   post_Order_BST(root);
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
@@ -172,7 +172,7 @@ int main(int n,char *file[])
 		   printf("\n======================================================================================================================================\n");
 		   
 		   printf("\n");
-		   printf("\n In Order Traversal is:\n");
+		   printf("\n In Order Traversal is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   in_Order_BST(root);
 		   printf("\n");
 		   printf("\n======================================================================================================================================\n");
@@ -194,7 +194,7 @@ int main(int n,char *file[])
 		case 10:
 		  
                    printf("\n======================================================================================================================================\n");
-		   printf("enter the character to be deleted\n");
+		   printf("enter the character to be deleted:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   printf("\n======================================================================================================================================\n");
 		   scanf("%c",&c);
 		   printf("\n%c\n",c);
@@ -209,17 +209,17 @@ int main(int n,char *file[])
 		     printf("\n===================================================================================================================================\n");
                      printf("\n");
 		     printf("\n===================================================================================================================================\n");
-		     printf("Binary Search Tree after the deletion is :\n");
+		     printf("Binary Search Tree after the deletion is :>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		     printf("\n===================================================================================================================================\n");
 		     root=deleteNode_BST(root,key);
 		     printf("\n===================================================================================================================================\n");
-		     printf(" In Triangular Form :\n");
+		     printf(" In Triangular Form >>>>>>>>>>>>>>>>>>>>>>>:\n");
 		     printf("\n===================================================================================================================================\n");
 		     print_Tree_Triangle_BST(root,1);
 		     printf("\n"); 
 		     printf("\n");
 		     printf("\n ==================================================================================================================================\n");
-		     printf("In Diagonal Form:\n");
+		     printf("In Diagonal Form:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		     printf("\n===================================================================================================================================\n");
 		     print_Tree_Diagonal_BST(root,1);
 		     printf("\n");
@@ -233,25 +233,23 @@ int main(int n,char *file[])
 		     printf("\n");
 		     count=0;
 		     printf("\n===================================================================================================================================\n");
-		     printf("\n Number of nodes in the Binary Search Tree after the Deletion of  character is %d\n",countNodes_BST(root));
-		     printf("\n===================================================================================================================================\n");
-		     printf("\n");
+		  
                     
 		     printf("\n===================================================================================================================================\n");
 		     
 		   
-		     printf("\n Pre ordering printing after the deletion of  character is :\n");
+		     printf("\n Pre ordering printing after the deletion of  character is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
                      printf("\n\n");
 		     preOrderPrint_BST(root);
 		     printf("\n===================================================================================================================================\n");
                      printf("\n");
                      printf("\n===================================================================================================================================\n");
-                     printf("Post Order printing after the deletion of  character in the Binary Search Tree is :\n");
+                     printf("Post Order printing after the deletion of  character in the Binary Search Tree is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 		     printf("\n");
                      post_Order_BST(root);
 		     printf("\n===================================================================================================================================\n");
                      printf("\n");
-                     printf("In order printing after the deletion of the  character in the Binary Search Tree is \n");
+                     printf("In order printing after the deletion of the  character in the Binary Search Tree is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
                      in_Order_BST(root);
 		     printf("\n=====================================================================================================================================");
                      printf("\n");
@@ -271,11 +269,16 @@ int main(int n,char *file[])
 	             case 11:
 		       printf("\n");
 		       quit=1;
-		       printf("\n Good bye Have a Nice Time\n");
+		       printf("\n==================================================================================\n");
+		       printf("\n End of Binary Search Tree Implementation.................................\n");
+		       printf("\n=====================================================================================\n");
 		       printf("\n");
+		       break;
 			default:
 		               quit=0;
-		         printf("\n !!!!!!!!!!!!!!!!!In correct option please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+			  printf("\n=====================================================================================================\n");     
+		         printf("\n !!!!!!!!!!!!!!!!!!!!!!OOOOOOOOOO    Sorrry Wrong choice Please Try Again!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			 printf("\n=========================================================================================================\n");
 		    }
 		   
 		}while(option!=11);
@@ -311,7 +314,7 @@ int main(int n,char *file[])
 		    printf("\n");
 		    printf("\n");
 		    int opt;
-		    char cor='R';
+		   
 		   do
 		    {
 			printf("\n================================================================================\n");
@@ -335,6 +338,7 @@ int main(int n,char *file[])
 			   printf("\n\n");
 			   printf("\n==============================================================================================================================\n");
 		           print_AVL(avl,2);
+			   printf("\n");
 			   printf("Height of the Adelson Velski Landis Tree is %d\n",height(avl));
                            printf("\n\n");
 			   printf("\n==============================================================================================================================\n");           	           
@@ -344,7 +348,7 @@ int main(int n,char *file[])
 		         printf("\n");
 			 print_AVL(avl,2);
 		         printf("\n================================================================================================================================\n");
-	                 printf("\n pre order printing of the Adelson Velski Landis Tree is :\n");
+	                 printf("\n pre order printing of the Adelson Velski Landis Tree is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 		         printf("\n");
 	                 preorder(avl);
 		         printf("\n");
@@ -356,7 +360,7 @@ int main(int n,char *file[])
 		         printf("\n");
 			 print_AVL(avl,2);
 			 printf("\n================================================================================================================================\n");
-		         printf("\n Post order printing of the Adelson Velski Landis Tree is :\n");
+		         printf("\n Post order printing of the Adelson Velski Landis Tree is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 		         postorder(avl);
 			 printf("\n");
 			 printf("\n================================================================================================================================\n");
@@ -366,7 +370,7 @@ int main(int n,char *file[])
 			 printf("\n");
 			 print_AVL(avl,2);
 			 printf("\n================================================================================================================================\n");
-			 printf("In order printing of the Adelson Velski Tree is :\n");
+			 printf("In order printing of the Adelson Velski Tree is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 			 inorder(avl);
 			 printf("\n");
 			 printf("\n================================================================================================================================\n");
@@ -375,7 +379,7 @@ int main(int n,char *file[])
 			   system("clear");
 			   printf("\n");
                            printf("\n==============================================================================================================================\n");
-			   printf("Enter the character to be deleted from the Adelson Velski Landis Tree:\n");
+			   printf("Enter the character to be deleted from the Adelson Velski Landis Tree:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 			   printf("\n==============================================================================================================================\n");
 		           scanf("%c",&key);
 			   printf("\n %c\n",key);
@@ -387,7 +391,7 @@ int main(int n,char *file[])
 				 printf("============================================================================================================================");
                                               
                                  printf("\n");
-			         printf("\n Adelson Velski Landis Tree after the deletion is :\n");
+			         printf("\n Adelson Velski Landis Tree after the deletion is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 			         avl=Delete(avl,key);
 			         print_AVL(avl,1);
 			         printf("\n");
@@ -396,19 +400,19 @@ int main(int n,char *file[])
 			         printf("\n========================================================================================================================\n");
 			         printf("\n");
 				 printf("\n========================================================================================================================\n");
-			         printf("\n Pre Order Printing of the Adelson Velski Tree after the deletion process is :\n");
+			         printf("\n Pre Order Printing of the Adelson Velski Tree after the deletion process is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 			         preorder(avl);
 			         printf("\n");
 				 printf("\n========================================================================================================================\n");
 			         printf("\n\n");
 				 printf("\n=========================================================================================================================\n");
-				 printf("\n Post Order Printing after the deletion process is :\n");
+				 printf("\n Post Order Printing after the deletion process is >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 			         postorder(avl);
 			         printf("\n");
 				 printf("\n========================================================================================================================\n");
 			         printf("\n");
 				 printf("\n========================================================================================================================\n");
-				 printf("\n In order printing of the Adelosn Velski Tree after the deletion process is :\n");
+				 printf("\n In order printing of the Adelosn Velski Tree after the deletion process is>>>>>>>>>>>>>>>>>>>>>>>>>>>:\n");
 			         inorder(avl);
 			         printf("\n\n");
 				 printf("\n========================================================================================================================\n");
@@ -426,7 +430,7 @@ int main(int n,char *file[])
 		       case 6:			
 			    
 				 printf("\n========================================================================================================================\n");
-		                 printf("\n balance factor of the Adelson Velski Tree is %d \n",BF(avl));
+		                 printf("\n balance factor of the Adelson Velski Tree is %d \n",BalanceFactor(avl));
 				 printf("\n========================================================================================================================\n");
 				 
 			   
@@ -443,17 +447,20 @@ int main(int n,char *file[])
 			     printf("\n===============================================================================================================================\n");
 			       smallest_AVL(avl);
 			     printf("\n==========================================================================================================================\n");
-
+                                   break;
 		       case 9:
 			        printf("\n\n");
 				printf("///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////");
 	                         
 				quit=1;
-			        printf("\n good bye\n\n");
+			        printf("\n End of the Adelson Velski Landis Tree Implementation......................................\n\n");
 				printf("\n////////////////////////////////////////////////////////////////////////////////////////////////////////////////////\n");
 				break;
 		      default:
-			    printf("\n Incorrect option\n");
+		            printf("\n");
+			    printf("\n===================================================================================================\n");
+			    printf("\n !!!!!!!!!!!!!!!!!!!!!!!!!!!!!Incorrect option!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+			    printf("\n====================================================================================================\n");
 			    quit=0;
 			       }
 			     printf("\n\n");
@@ -483,6 +490,7 @@ int main(int n,char *file[])
 		    fscanf(fp,"%s",ch);
 		   
 		    printf("\n");
+		    print_btree(btree,1);
 		    display(btree);
 		}
 		     do
@@ -492,7 +500,6 @@ int main(int n,char *file[])
 			 printf("\n Press 2- Printing of  the B-Tree\n");
 			 printf("\n Press 3- Pre-Traversal of the B tree\n"); 
 			 printf("\n Press 4-Deleting an element in the B tree \n");
-			 
 			 printf("\n Press 5- termination from the B tree\n");
 			 printf("\n=====================================================\n");
 			 printf("\n\n");
@@ -503,40 +510,49 @@ int main(int n,char *file[])
 			 switch(valid)
 			 {
 			     case 1:
+
 				 printf("\n");
+				 printf("\n=====================================================\n");
 				 printf("\n Height of the B tree is %d\n",maxLevel(btree));
+				 printf("\n=======================================================\n");
 				 printf("\n");
 				 break;
 			     case 2:
 				 printf("\n");
-				print_btree(btree,3);
+				 printf("\n=========================================================\n");
+				print_btree(btree,1);
+				printf("\n============================================================\n");
 
 				 printf("\n ");
 				 break;
 				  
 			     case 3:
 				 printf("\n ");
-				 printf("\n pre order traversal of the B tree is\n");
-				    printf("\n");
-				    display(btree);
+				 print_btree(btree,1);
+				 printf("\n");
+				 printf("\n====================================================\n");
+				 printf("\n pre order traversal of the B tree is>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
+				  printf("\n");
+				  display(btree);
+				  printf("\n");
+                                   printf("\n======================================================\n");
 				    break;
 			     case 4:
 				 {
-				 printf("\n");			        				 				     
+				 printf("\n");
+                                 printf("\n======================================================\n");				 
 			         printf("\n Deleting the character ||z|| .............\n");
 				 btree=delete_('z',btree);
+				 printf("\n==========================================================\n");
 			
+				 printf("\n=====================================================================\n");
 				 printf("\n B tree after the deletion process is \n");
-			
+				 printf("\n");
 				 printf("\n Btree display sfter the Deletion process is\n");
+				 print_btree(btree,1);
+				 printf("\n\n");
 				 display(btree);
-				
-		
-			
-
-		
-		
-		
+		                 printf("\n==========================================================================\n");
 				 }
 				 printf("\n");
 
@@ -546,8 +562,10 @@ int main(int n,char *file[])
 			     case 5:
 				quit=1;
 				printf("\n\n");
-				printf("\n Good bye\n");
-	
+				printf("\n===============================================================================\n");
+				printf("\n End of the B tree INmplmentation...................\n");
+				printf("\n================================================================================\n");
+	                       printf("\n");
 
 
 				 break;
@@ -555,7 +573,9 @@ int main(int n,char *file[])
                      default:
 				 printf("\n");
 				 quit=0;
-				 printf("\n In correct option please try again\n");
+				 printf("\n============================================================================================\n");
+				 printf("\n !!!!!!!!!!!!!!!!!!!!!!!!!!In correct option please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+				 printf("\n=================================================================================================\n");
 			 }//end of switch case for B tree choices
                  
 		 
@@ -563,22 +583,18 @@ int main(int n,char *file[])
 
 		     printf("\n");
 		
-	
-
-
-		
-
-         
-	  break;
+	               break;
 	     case 4:
-	        
-		 printf("\n good bye\n");
-		 printf("\n");
+	        printf("\n=========================================================================\n");
+		 printf("\n TERMINATION OF THE TREE LIBRARY PROGRAM.......................... \n");
+	         printf("\n");
+		 printf("\n===========================================================================\n");
 		 exit(-1);
 		 break;
 	     default:
-	             
-	           printf("\n Incorrect option please try again\n");
+	           printf("\n=========================================================================================================\n");  
+	           printf("\n !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!Incorrect option please try again!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!\n");
+		   printf("\n=============================================================================================================\n");
 		   printf("\n");
 	}//end of switch case for Tree Algorithms options
 	

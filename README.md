@@ -41,4 +41,6 @@ In this project I have been implemented different Tree Data Structures which are
          - Height of the B tree
           - Termination       
      
-  
+     It is Recommended to use GNU compliling the Program . It is suggested to use gcc  to run the program rather than the makefile
+     since makefileis giving me some trouble.
+     Do not forget to use command line argument at the time of execution

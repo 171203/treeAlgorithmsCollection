@@ -4,7 +4,7 @@
 
 #include<stdio.h>
 #include<stdlib.h>
-#include"Tree_Algorithms.h"
+#include"Tree.h"
 //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /*****************************************************************************************************/
         /*****************************************************************************************************/
@@ -213,7 +213,7 @@ int Depth_BST(node *root)
 	      return (rdepth+1);
     }
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int search_BST(node *root,char key)
 {
     while(root!=NULL)
@@ -238,17 +238,17 @@ int search_BST(node *root,char key)
 ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
+   /*******************************************************************************************************************/
+   //                            ADELSON VELSKI LANDIS TREE FUNCTIONS                                                  
+   //
+   //*******************************************************************************************************************//
 
-
-
-
-
-
-nodee * _insert(nodee *T,char x)
+  //           Inserting The Characters into the AVL Tree
+nodee * _insert(nodee *T,char x)// nodeee is a AVL TREE structure definition
 {
-	if(T==NULL)
+	if(T==NULL)// check for the Null tree
 	{
-		T=(nodee*)malloc(sizeof(nodee));
+		T=(nodee*)malloc(sizeof(nodee));// if the tree is empty then insert the characters
 		T->data=x;
 		T->left=NULL;
 		T->right=NULL;
@@ -257,55 +257,57 @@ nodee * _insert(nodee *T,char x)
 		if(x > T->data)		// insert in right subtree
 		{
 			T->right=_insert(T->right,x);
-			if(BF(T)==-2)
+			if(BalanceFactor(T)==-2)// checking for the balance factor
 				if(x>T->right->data)
 					T=RR(T);
 				else
 					T=RL(T);
 		}
 		else
-			if(x<T->data)
+			if(x<T->data) // insert in the left sub tree
 			{
 				T->left=_insert(T->left,x);
-				if(BF(T)==2)
+				if(BalanceFactor(T)==2)// checking for the balance factor
 					if(x < T->left->data)
-						T=LL(T);
+						T=LL(T);// left left rotation
 					else
-						T=LR(T);
+						T=LR(T);// left right rotation
 			}
 		
-		T->ht=height(T);
+		T->ht=height(T);// updating the height
 		
 		return(T);
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
-nodee * Delete(nodee *T,char x)
+/// Deletion of the particular node in the AVL tree
+nodee * Delete(nodee *T,char x)// nodee is a avl tree data structure definition
 {
 	nodee *p;
 	
-	if(T==NULL)
+	if(T==NULL)// check for empty tree
 	{
-		return NULL;
+		return NULL;// nothing to do
 	}
 	else
-		if(x > T->data)		// insert in right subtree
+		if(x > T->data)		// delete in right subtree
 		{
 			T->right=Delete(T->right,x);
-			if(BF(T)==2)
-				if(BF(T->left)>=0)
+			if(BalanceFactor(T)==2)
+				if(BalanceFactor(T->left)>=0)
 					T=LL(T);
 				else
 					T=LR(T);
 		}
 		else
-			if(x<T->data)
+			if(x<T->data) // delete in the left subtree
 			{
 				T->left=Delete(T->left,x);
-				if(BF(T)==-2)	//Rebalance during windup
-					if(BF(T->right)<=0)
-						T=RR(T);
+				if(BalanceFactor(T)==-2)	//Rebalance during windup
+					if(BalanceFactor(T->right)<=0)
+						T=RR(T);// right right rotation
 					else
-						T=RL(T);
+						T=RL(T);// right left rotation
 			}
 			else
 			{
@@ -320,31 +322,33 @@ nodee * Delete(nodee *T,char x)
 					T->data=p->data;
 					T->right=Delete(T->right,p->data);
 					
-					if(BF(T)==2)//Rebalance during windup
-						if(BF(T->left)>=0)
-							T=LL(T);
+					if(BalanceFactor(T)==2)//Rebalance during windup
+						if(BalanceFactor(T->left)>=0)
+							T=LL(T);// left left roptation
 						else
-							T=LR(T);\
+							T=LR(T);// left right rotation
 				}
 				else
 					return(T->left);
 			}
-	T->ht=height(T);
+	T->ht=height(T);// updating the height
 	return(T);
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////
  
+// height of the AVL tree
 int height(nodee *T)
 {
 	int lh,rh;
-	if(T==NULL)
+	if(T==NULL)//check for empty tree
 		return(0);
 	
-	if(T->left==NULL)
+	if(T->left==NULL)// check for empty left suntree
 		lh=0;
 	else
 		lh=1+T->left->ht;
 		
-	if(T->right==NULL)
+	if(T->right==NULL)// check for empty right suntree
 		rh=0;
 	else
 		rh=1+T->right->ht;
@@ -354,7 +358,8 @@ int height(nodee *T)
 	
 	return(rh);
 }
- 
+   /////////////////// /////////////////////////////////////////////////////////////////////////////////////////////////
+  // Rotate right//
 nodee * rotateright(nodee *x)
 {
 	nodee *y;
@@ -365,6 +370,9 @@ nodee * rotateright(nodee *x)
 	y->ht=height(y);
 	return(y);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+     //                 ROTATE LEFT
+
  
 nodee * rotateleft(nodee *x)
 {
@@ -377,35 +385,44 @@ nodee * rotateleft(nodee *x)
 	
 	return(y);
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Rotate right and then right again
  
-nodee * RR(nodee *T)
+nodee * RR(nodee *t)
 {
-	T=rotateleft(T);
-	return(T);
+	t=rotateleft(t);
+	return(t);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// Rotate Left and then lef again
  
-nodee * LL(nodee *T)
+nodee * LL(nodee *t)
 {
-	T=rotateright(T);
-	return(T);
+	t=rotateright(t);
+	return(t);
 }
- 
-nodee * LR(nodee *T)
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+// rotate Left and then right again 
+nodee * LR(nodee *t)
 {
-	T->left=rotateleft(T->left);
-	T=rotateright(T);
+	t->left=rotateleft(t->left);
+	t=rotateright(t);
 	
-	return(T);
+	return(t);
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  
-nodee * RL(nodee *T)
+nodee * RL(nodee *t)
 {
-	T->right=rotateright(T->right);
-	T=rotateleft(T);
-	return(T);
+	t->right=rotateright(t->right);
+	t=rotateleft(t);
+	return(t);
 }
- 
-int BF(nodee *T)
+ //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+int BalanceFactor(nodee *T)
 {
 	int lh,rh;
 	if(T==NULL)
@@ -423,27 +440,27 @@ int BF(nodee *T)
  
 	return(lh-rh);
 }
- 
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void preorder(nodee *T)
 {
 	if(T!=NULL)
 	{
-		printf("%c(Bf=%d)",T->data,BF(T));
+		printf("%c|(Balancefactor=%d)|->",T->data,BalanceFactor(T));
 		preorder(T->left);
 		preorder(T->right);
 	}
 }
- 
+ ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void inorder(nodee *T)
 {
 	if(T!=NULL)
 	{
 		inorder(T->left);
-		printf("%c(Bf=%d)",T->data,BF(T));
+		printf("%c|(Balanefactor=%d)|->",T->data,BalanceFactor(T));
 		inorder(T->right);
 	}
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  int search_AVL(nodee *head,char info)
 {
     while(head!=NULL)
@@ -464,21 +481,22 @@ void inorder(nodee *T)
     }
     return 0;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void postorder(nodee *T)
 {
     if(T!=NULL)
     {
 	postorder(T->left);
 	postorder(T->right);
-	printf("\n %c(Bf=%d)->   ",T->data,BF(T));
+	printf(" %c(Balancefactor=%d)->   ",T->data,BalanceFactor(T));
     }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int maximum_AVL(char a,char b)
 {
     return (a > b)? a: b;
 }
-  
+  //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
  void  print_AVL(nodee *avl,int level)
 {
     int i;
@@ -493,7 +511,7 @@ int maximum_AVL(char a,char b)
     }
 }
   
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int Depth_AVL(nodee *head)
 {
     int ldepth,rdepth;
@@ -509,7 +527,7 @@ int Depth_AVL(nodee *head)
 	    return (rdepth+1);
     }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void smallest_AVL(nodee *head)
 {
     while(head!=NULL && head->left!=NULL)
@@ -518,6 +536,7 @@ void smallest_AVL(nodee *head)
     }
     printf("\n Smallest node in the Adelson Velski Landis tree is %c\n",head->data);
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void largest_AVL(nodee *head)
 {
     while(head!=NULL && head->right!=NULL)
@@ -526,10 +545,14 @@ void largest_AVL(nodee *head)
     }
     printf("\n Largest Node in the Adelson Velski Landis Tree is %c\n",head->data);
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-
+/**********************************************************************************************************************/
+//                                 B Tree FUNCTIONS                                                                   
+//
+//
+/*********************************************************************************************************************/
 
 /* inserts a value in the B-tree*/
 struct btnode * insert ( char val, struct btnode *root )
@@ -550,6 +573,7 @@ struct btnode * insert ( char val, struct btnode *root )
     }
     return root ;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* sets the value in the node */
 int setval ( char val, struct btnode *n, char *p, struct btnode **c )
@@ -582,6 +606,7 @@ int setval ( char val, struct btnode *n, char *p, struct btnode **c )
         return 0 ;
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* searches value in the node */
 struct btnode * search ( char val, struct btnode *root, int *pos )
@@ -596,6 +621,7 @@ struct btnode * search ( char val, struct btnode *root, int *pos )
 	    return search ( val, root -> child [*pos], pos ) ;
     }
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* searches for the node */
 int searchnode ( char val, struct btnode *n, int *pos )
@@ -616,7 +642,7 @@ int searchnode ( char val, struct btnode *n, int *pos )
 	    return 0 ;
     }
 }
-
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* adjusts the value of the node */
 void fillnode ( char val, struct btnode *c, struct btnode *n, int k )
@@ -631,6 +657,7 @@ void fillnode ( char val, struct btnode *c, struct btnode *n, int k )
     n -> child [k + 1] = c ;
     n -> count++ ;
 }
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* splits the node */
 void split ( char val, struct btnode *c, struct btnode *n,
@@ -663,12 +690,13 @@ void split ( char val, struct btnode *c, struct btnode *n,
     ( *newnode ) -> child [0] = n -> child [n -> count] ;
     n -> count-- ;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* deletes value from the node */
 struct btnode * delete_ ( char val, struct btnode *root )
 {
     struct btnode * temp ;
-    if ( ! delhelp ( val, root ) )
+    if ( ! delete_leaf ( val, root ) )
         printf ( "\nValue |%c| not found.", val ) ;
     else
     {
@@ -682,9 +710,9 @@ struct btnode * delete_ ( char val, struct btnode *root )
     }
     return root ;
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* helper function for delete( ) */
-int delhelp ( char val, struct btnode *root )
+int delete_leaf ( char val, struct btnode *root )
 {
     int i ;
     int flag ;
@@ -698,7 +726,7 @@ int delhelp ( char val, struct btnode *root )
             if ( root -> child [i - 1] )
             {
                 copysucc ( root, i ) ;
-                flag = delhelp ( root -> value [i], root -> child [i] ) ;
+                flag = delete_leaf ( root -> value [i], root -> child [i] ) ;
                 if ( !flag )
                     printf ( "\nValue |%c| not found.", val ) ;
             }
@@ -706,7 +734,7 @@ int delhelp ( char val, struct btnode *root )
                 clear ( root, i ) ;
         }
         else
-            flag = delhelp ( val, root -> child [i] ) ;
+            flag = delete_leaf ( val, root -> child [i] ) ;
 
         if ( root -> child [i] != NULL )
         {
@@ -716,7 +744,7 @@ int delhelp ( char val, struct btnode *root )
         return flag ;
     }
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* removes the value from the node and adjusts the values */
 void clear ( struct btnode *node, int k )
 {
@@ -728,7 +756,7 @@ void clear ( struct btnode *node, int k )
     }
     node -> count-- ;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* copies the successor of the value that is to be deleted */
 void copysucc ( struct btnode *node, int i )
 {
@@ -741,6 +769,7 @@ void copysucc ( struct btnode *node, int i )
 
     node -> value [i] = temp -> value [1] ;
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* adjusts the node */
 void restore ( struct btnode *node, int i )
@@ -775,7 +804,7 @@ void restore ( struct btnode *node, int i )
         }
     }
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* adjusts the values and children while shifting the value from parent to right 
     child */
 void rightshift ( struct btnode *node, int k )
@@ -800,6 +829,7 @@ void rightshift ( struct btnode *node, int k )
     node -> child [k] -> child [0] = temp -> child [temp -> count] ;
     temp -> count-- ;
 }
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 /* adjusts the values and children while shifting the value from parent to left 
     child */
@@ -824,7 +854,7 @@ void leftshift ( struct btnode *node, int k )
         temp -> child [i] = temp -> child [i + 1] ;
     }
 }
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* merges two nodes */
 void merge ( struct btnode *node, int k )
 {
@@ -851,7 +881,7 @@ void merge ( struct btnode *node, int k )
     node -> count-- ;
     free ( temp1 ) ;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 /* displays the B-tree */
 void display ( struct btnode *root )
 {
@@ -867,6 +897,7 @@ void display ( struct btnode *root )
         display ( root -> child [i] ) ;
     }
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Maximum in the b tree//
 
 int max_btree(char first, char second, char third) {
@@ -875,6 +906,7 @@ if (second > max) max = second;
 if (third > max) max = third;
 return max;
 }
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 //Maximum level in the B tree//
 int maxLevel(struct btnode *head) {
 if (head) 
@@ -890,7 +922,7 @@ return max_depth;
 }
 return 0;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void print_btree(struct btnode *head, int blanks)
 {
@@ -906,7 +938,7 @@ for (i=0; i <= head->count; i++)
 print_btree(head->child[i], blanks+10);
 }/*End of if*/
 }/*End of display()*/
-
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 int totalKeys(struct btnode *head) {
 if (head) {
@@ -920,10 +952,11 @@ return count;
 }
 return 0;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void printTotal(struct btnode *head) {
 printf("%d\n",totalKeys(head));
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 int getMin(struct btnode *head) {
@@ -935,7 +968,7 @@ return min;
 }
 return 0;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 int getMax(struct btnode *head) {
 if (head) {
 int max;
@@ -951,10 +984,11 @@ return max;
 }
 return 0;
 }
-
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 void getMinMax(struct btnode *head) {
 printf("%c %c\n", getMin(head), getMax(head));
 }
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
 
