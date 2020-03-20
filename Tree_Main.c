@@ -13,13 +13,11 @@ int main(int n,char *file[])
     char ch[1];
     nodee *avl=NULL;
     node *root=NULL;
-    struct btnode *btree=NULL;
-    char condition='M';
-    int *h;
+    struct btnode *btree=NULL;  
     FILE *fp;
     int count=0;
-    int *i;
     int valid;
+    int quit;
 
 
     if(n!=2)
@@ -44,17 +42,17 @@ int main(int n,char *file[])
     printf("==================================================================TREE LIBRARY=========================================================================\n");
    while(1)
     {	
-      printf("\n===================================================================================================================================================\n");
-      printf("\n\t\t\t\t Press 1- Binary Search Tree\t\t\t\t");
-      printf("\n\t\t\t\t Press 2- Adelson Velski Landis Tree\t\t\t\t\n");
-      printf("\n\t\t\t\t Press 3- B Tree  \t\t\t\t\n");
-      printf("\n\t\t\t\t Press 4- Termination of the Program\t\t\t\t\n");
-      printf("\n===================================================================================================================================================\n");
-      printf("\n\n");
-      printf("\n enter your choice\n");
-      printf("\n\n");
-      scanf("%d",&choice);
-      printf("\n %d\n",choice);
+        printf("\n===================================================================================================================================================\n");
+        printf("\n\t\t\t\t Press 1- Binary Search Tree\t\t\t\t");
+        printf("\n\t\t\t\t Press 2- Adelson Velski Landis Tree\t\t\t\t\n");
+        printf("\n\t\t\t\t Press 3- B Tree  \t\t\t\t\n");
+        printf("\n\t\t\t\t Press 4- Termination of the Program\t\t\t\t\n");
+        printf("\n===================================================================================================================================================\n");
+        printf("\n\n");
+        printf("\n enter your choice\n");
+        printf("\n\n");
+        scanf("%d",&choice);
+        printf("\n %d\n",choice);
 
 
 
@@ -75,8 +73,8 @@ int main(int n,char *file[])
 		    exit(-1);
 		}
 	
-		
-		
+		  else
+		  {   
 		   root=Insert_node_BST(root,ch[0]);
 		   fscanf(fp,"%s",ch);
 		   printf("Binary Search Tree in Triangular form is:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
@@ -131,7 +129,7 @@ int main(int n,char *file[])
 		   printf("\n=======================================================================================================================================\n");
 		   break;
 			
-			case 4:
+	        case 4:
 		   printf("\n");
 		   count=0;
 		   count=0;
@@ -196,15 +194,15 @@ int main(int n,char *file[])
                    printf("\n======================================================================================================================================\n");
 		   printf("enter the character to be deleted:>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>\n");
 		   printf("\n======================================================================================================================================\n");
-		   scanf("%c",&c);
-		   printf("\n%c\n",c);
-		    c=getchar();
-		   flag= search_BST(root,c);
+		   scanf("%c",&key);
+		   printf("\n%c\n",key);
+		   key=getchar();
+		   flag= search_BST(root,key);
                     if(flag)
 		      
 		    {
 		     printf("\n====================================================================================================================================\n");
-		     printf("Key %c found in the Tree \n",c);
+		     printf("Key %c found in the Tree \n",key);
                      printf("\n====================================================================================================================================\n"); 
 		     printf("\n===================================================================================================================================\n");
                      printf("\n");
@@ -262,7 +260,7 @@ int main(int n,char *file[])
 		     printf("=======================================================================================================================================");                         }
 		      else
 		      {
-			  printf("\n %c not found in the Binary Search Tree \n",c);
+			  printf("\n %c not found in the Binary Search Tree \n",key);
 		      }
 
 		       break;
@@ -274,46 +272,45 @@ int main(int n,char *file[])
 		       printf("\n=====================================================================================\n");
 		       printf("\n");
 		       break;
-			default:
-		               quit=0;
-			  printf("\n=====================================================================================================\n");     
-		         printf("\n !!!!!!!!!!!!!!!!!!!!!!OOOOOOOOOO    Sorrry Wrong choice Please Try Again!!!!!!!!!!!!!!!!!!!!!!!!!!");
-			 printf("\n=========================================================================================================\n");
+		     default:
+		        quit=0;
+			printf("\n=====================================================================================================\n");     
+		        printf("\n !!!!!!!!!!!!!!!!!!!!!!OOOOOOOOOO    Sorrry Wrong choice Please Try Again!!!!!!!!!!!!!!!!!!!!!!!!!!");
+			printf("\n=========================================================================================================\n");
 		    }
 		   
 		}while(option!=11);
+	  }//end of the Binary Search Tree
                  break;
              case 2:
 		     
-            system("clear");
-            rewind(fp);   
-	    while(!feof(fp))
-	    {
-		avl=_insert(avl,ch[0]);
-		fscanf(fp,"%s",ch);
-	    }
+                 system("clear");
+                 rewind(fp);   
+	         while(!feof(fp))
+	           {
+		     avl=_insert(avl,ch[0]);
+		     fscanf(fp,"%s",ch);
+	           }   
 		
-	     if(avl==NULL)
-		{
+	            if(avl==NULL)
+		     {
 		   
-		    printf("Tree is empty\n");
-		    exit(-1);
-		}
+		       printf("Tree is empty\n");
+		       exit(-1);
+		     }
 		
 		
-		else
-		{
-	
-		
-		    avl=_insert(avl,ch[0]);
-		    fscanf(fp,"%s",ch);
-		    printf("AVL Tree printing\n");
-		    preorder(avl);
-		    inorder(avl);
-		    print_AVL(avl,2);
-		    printf("\n");
-		    printf("\n");
-		    int opt;
+		    else
+		     {
+		      avl=_insert(avl,ch[0]);
+		      fscanf(fp,"%s",ch);
+		      printf("AVL Tree printing\n");
+		      preorder(avl);
+		      inorder(avl);
+		      print_AVL(avl,2);
+		      printf("\n");
+		      printf("\n");
+		      int opt;
 		   
 		   do
 		    {
